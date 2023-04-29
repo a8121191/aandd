@@ -19,13 +19,18 @@
             show(numbers);*/
             
             //prac1-2 乱数を10個挿入する
-            for(i=0; i<10; i++){
+            /*for(i=0; i<10; i++){
                 var x = Math.floor(Math.random()*10+1);
                 numbers.push(x);
             }
-            show(numbers);
+            show(numbers);*/
 
             //prac1-3 '田中'を10個挿入する
+            for(j=0; j<10; j++){
+                numbers.push("田中")
+            }
+            show(numbers);
+
             //prac1-4 1から20までの数を順に20個挿入する
 
             
@@ -48,7 +53,7 @@
 </head>
 
 <body>
-    <h1>prac1-2</h1>
+    <h1>prac1-3</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
