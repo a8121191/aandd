@@ -11,11 +11,33 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
+
             //prac1-5〜 1から10までの数を順に10個挿入する
+            for(i=0; i<10; i++){
+                numbers.push(i+1);
+            }
             show(numbers);
+
             //prac1-5 全ての要素に10を足す
-            //prac1-6 全ての要素に10をかける
+            for(j=0; j<10; j++){
+                numbers[j] = numbers[j]+10;
+            }
             show(numbers);
+            
+            //prac1-6 全ての要素に10をかける
+        }
+
+        function show(array) {
+            var html = '';
+            html = html + '<table border="1">';
+            html = html + '<tr>';
+            for (var i = 0; i < array.length; i++) {
+                html = html + '<td>' + array[i] + '</td>';
+            }
+            html = html + '</tr>';
+            html = html + '</table>';
+            //document.getElementById('res').innerHTML = html;
+            document.getElementById('res').insertAdjacentHTML('beforeend', html);
         }
     </script>
 
