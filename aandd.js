@@ -11,11 +11,11 @@ function show(array) {
     document.getElementById('res').insertAdjacentHTML('beforeend', html);
 }
 
-/*function createSequentialNumbers(array, n){
+function createSequentialNumbers(array, n){
     for(var j=0; j<n; j++){
         array.push(j+1);
     }
-}*/
+}
 
 function createRandomNumbers(array,n){
     for(var k=0; k<n; k++){
