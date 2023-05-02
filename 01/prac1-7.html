@@ -15,34 +15,16 @@
             //prac1-7 1からNまでの数を順にN個挿入する関数を作る
             //関数名：createSequentialNumbers(array, n)
             //できたら，関数定義をaandd.jsに移す
-            //createSequentialNumbers(numbers, 20);
-
-            //prac1-8 N個の乱数を挿入する関数を作る
-            //関数名：createRandomNumbers(array, n)
-            createRandomNumbers(numbers,20);
-            //できたら，関数定義をaandd.jsに移す
+            createSequentialNumbers(numbers, 20);
 
             show(numbers);
-        }
-
-        function show(array) {
-            var html = '';
-            html = html + '<table border="1">';
-            html = html + '<tr>';
-            for (var i = 0; i < array.length; i++) {
-                html = html + '<td>' + array[i] + '</td>';
-            }
-            html = html + '</tr>';
-            html = html + '</table>';
-            //document.getElementById('res').innerHTML = html;
-            document.getElementById('res').insertAdjacentHTML('beforeend', html);
         }
     </script>
 
 </head>
 
 <body>
-    <h1>prac1-8</h1>
+    <h1>prac1-7</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
