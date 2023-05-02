@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            
+            //prac1-2 乱数を10個挿入する
+            for(var i=0; i<10; i++){
+                var x = Math.floor(Math.random()*10+1);
+                numbers.push(x);
+            }
+
+            show(numbers);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>prac1-2</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
