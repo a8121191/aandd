@@ -14,7 +14,8 @@
 
         function runButtonPressed() {
             numbers = []
-            createOrderedRandomNumbers(numbers, 20);
+            var n = 20 //numbersに入れる数字の数（numbers.length）
+            createOrderedRandomNumbers(numbers, n);
             show(numbers,"numbers : ");
         }
 
@@ -32,13 +33,13 @@
             while(result == "unfinished"){
                 
                 if(searchNumber < numbers[0] || searchNumber > numbers[numbers.length-1]){
-                    result = searchNumber +" is not exist."
+                    result = searchNumber +" doesn't exist in this array."
 
                 }else if(searchNumber == numbers[searchIndexLeft]){
-                    result = searchNumber+' is found.  Index number is '+searchIndexLeft;
+                    result = searchNumber+' is found.  Index is '+searchIndexLeft;
 
                 }else if(searchNumber == numbers[searchIndexRight]){
-                    result = searchNumber+' is found.  Index number is '+searchIndexRight;
+                    result = searchNumber+' is found.  Index is '+searchIndexRight;
 
                 }else if(searchNumber < numbers[searchIndexLeft]){
                     //↑配列における調べたindex番号に該当する値<見つけたい値
@@ -48,7 +49,7 @@
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
                     if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
-                        result = searchNumber +" is not exist."
+                        result = searchNumber +" doesn't exist in this array."
                     }else{
                         searchIndex = nextSearchIndex;
                         searchIndexLeft = nextSearchIndexLeft;
@@ -63,7 +64,7 @@
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
                     if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
-                        result = searchNumber +" is not exist."
+                        result = searchNumber +" doesn't exist in this array."
                     }else{
                         searchIndex = nextSearchIndex;
                         searchIndexLeft = nextSearchIndexLeft;
