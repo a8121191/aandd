@@ -24,13 +24,17 @@
             searchNumber = Number(searchNumber);
 
             var searchTimes = 1;//調べるのは何回目か
-            var searchIndex = (numbers.length-1)/(searchTimes*2);//調べるindex番号
+            var searchIndex = (numbers.length-1)/(2 ** searchTimes);//調べるindex番号
             var searchIndexLeft = Math.floor(searchIndex);//小数だった場合の、数直線における左側の整数
             var searchIndexRight = Math.ceil(searchIndex);//小数だった場合の、数直線における右側の整数
 
             var result = 'unfinished'
 
             while(result == "unfinished"){
+                show(searchTimes,"times : ")
+                show(searchIndexLeft,"____searchIndexLeft : ")
+                show(searchIndex,"___searchIndex : ")
+                show(searchIndexRight,"____searchIndexRight : ")
                 
                 if(searchNumber < numbers[0] || searchNumber > numbers[numbers.length-1]){
                     result = searchNumber +" doesn't exist in this array."
@@ -44,32 +48,38 @@
                 }else if(searchNumber < numbers[searchIndexLeft]){
                     //↑配列における調べたindex番号に該当する値<見つけたい値
                     searchTimes += 1;
-                    var moveLen = (numbers.length-1)/(searchTimes*2);//調べるindexへ動く距離
+                    var moveLen = (numbers.length-1)/(2 ** searchTimes);//調べるindexへ動く距離
                     var nextSearchIndex = searchIndex - moveLen;
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
-                    if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
+                    //if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
+                    /*if(Math.floor(Math.log2(numbers.length))+1 < searchTimes){
                         result = searchNumber +" doesn't exist in this array."
-                    }else{
-                        searchIndex = nextSearchIndex;
-                        searchIndexLeft = nextSearchIndexLeft;
-                        searchIndexRight = nextSearchIndexRight;
-                    }
+                    }else{*/
+                    searchIndex = nextSearchIndex;
+                    searchIndexLeft = nextSearchIndexLeft;
+                    searchIndexRight = nextSearchIndexRight;
+                    //}
 
                 }else if(searchNumber > numbers[searchIndexRight]){
                     //↑配列における調べたindex番号に該当する値>見つけたい値
                     searchTimes += 1;
-                    var moveLen = (numbers.length-1)/(searchTimes*2);//調べるindexへ動く距離
+                    var moveLen = (numbers.length-1)/(2 ** searchTimes);//調べるindexへ動く距離
                     var nextSearchIndex = searchIndex + moveLen;
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
-                    if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
+                    //if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){*/
+                    /*if(Math.floor(Math.log2(numbers.length))+1 < searchTimes){
                         result = searchNumber +" doesn't exist in this array."
-                    }else{
-                        searchIndex = nextSearchIndex;
-                        searchIndexLeft = nextSearchIndexLeft;
-                        searchIndexRight = nextSearchIndexRight;
-                    }
+                    }else{*/
+                    searchIndex = nextSearchIndex;
+                    searchIndexLeft = nextSearchIndexLeft;
+                    searchIndexRight = nextSearchIndexRight;
+                    //}
+                }else if(numbers[searchIndexLeft] < searchNumber && searchNumber < numbers[searchIndexRight]){
+                    result = searchNumber +" doesn't exist in this array."
+                }else{
+                    result = "error"
                 }
             }
 
