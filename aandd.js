@@ -1,5 +1,5 @@
-//ex3-1からコピー
-/*function show(obj) {
+//tamplate4-3からコピー
+function show(obj) {
     if (Array.isArray(obj)) {
         var html = '';
         html = html + '<table border="1">';
@@ -16,9 +16,9 @@
         string = string + '<br>';
         document.getElementById('res').insertAdjacentHTML('beforeend', string);
     }
-}*/
+}
 
-//ex3-1からコピーしたものを書き換え
+//template4-3からコピーしたものを書き換え
 function show(obj,name) {
     if (Array.isArray(obj)) {
         var html = '';
@@ -50,5 +50,19 @@ function createRandomNumbers(array,n){
     for(var k=0; k<n; k++){
         var x = Math.floor(Math.random()*100+1);
         array.push(x);
+    }
+}
+
+//template4-3.htmlよりコピー
+function createOrderedRandomNumbers(numbers, n) {
+    var count = 0;
+    for (var i = 1; ; i++) {
+        if (Math.floor(Math.random() * 3) == 0) {
+            numbers.push(i);
+            count++;
+            if (count >= n) {
+                break;
+            }
+        }
     }
 }
