@@ -1,5 +1,5 @@
 //tamplate4-3からコピー
-function show(obj) {
+/*function show(obj) {
     if (Array.isArray(obj)) {
         var html = '';
         html = html + '<table border="1">';
@@ -16,7 +16,7 @@ function show(obj) {
         string = string + '<br>';
         document.getElementById('res').insertAdjacentHTML('beforeend', string);
     }
-}
+}*/
 
 //template4-3からコピーしたものを書き換え
 function show(obj,name) {
