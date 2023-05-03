@@ -9,18 +9,53 @@
     <script type="text/javascript" src="../jquery.min.js"></script>
 
     <script>
+        //prac4 検索
+        var numbers = []
+
         function runButtonPressed() {
-            var numbers = [];
+            numbers = [];
             createOrderedRandomNumbers(numbers, 20);
-            show(numbers);
+            show(numbers,"numbers : ");
+        }
+
+        function searchButtonPressed(){
+            var searchNumber = document.getElementById("searchNum").value;
+            var searchPoint = Math.floor(numbers.length/2);//調べるindex番号
+            var moveLen = numbers.length;
+            var result = 'unfinished'
+
+            while(result == "unfinished"){
+                //値がリストの最大値最小値より大きい小さい（つまりリストのレンジからはみ出ている状態）のifを入れる？
+
+                if(searchNumber == numbers[searchPoint]){
+                    result = searchNumber+' is found.  Index number is '+searchPoint
+
+                }else if(searchNumber < numbers[searchPoint]){
+                    //↑配列における調べたindex番号に該当する値<見つけたい値
+                    searchPoint = Math.floor(searchPoint / 2);
+                    //↑調べるindex番号を小さくした
+
+                }else if(searchNumber > numbers[searchPoint]){
+
+                    //↑配列における調べたindex番号に該当する値>見つけたい値
+                    searchPoint = Math.floor(searchPoint * 3 / 2);
+                    //↑調べるindex番号を大きくした
+
+                }
+            }
+
+            show(result,"");
         }
     </script>
 
 </head>
 
 <body>
-    <h1>ex3-1</h1>
+    <h1>prac4</h1>
     <button onclick="runButtonPressed()">run!</button>
+    <br>
+    <input type="text" id="searchNum">
+    <button onclick="searchButtonPressed()">search</button>
     <p id="res"></p>
 </body>
 
