@@ -10,11 +10,44 @@
 
     <script>
         function runButtonPressed() {
+
             //prac3-1 10個の乱数の合計を求める（繰り返しで）
+            var numbers = [];
+            var n = 10;
+            createRandomNumbers(numbers, n);
+            show(numbers,"numbers : ");
+            var total = 0;
+            for(var i=0; i<numbers.length; i++){ //配列の走査
+                var each = numbers[i];
+                total += each;
+            }
+            show(total,"total : ");
+
             //prac3-2 10個の乱数の平均を求める
+            var ave = total / n;
+            show(ave,"ave : ");
+            
             //prac3-3 10個の乱数の最大値を求める
+            var max = 0;
+            for(var i=0; i<numbers.length; i++){
+                if(numbers[i]>max){
+                    max = numbers[i];
+                }
+            }
+            show(max,"max : ");
+            
             //prac3-4 10個の乱数の最小値を求める
+            var min = 100; //番兵
+            for(i=0; i<numbers.length; i++){
+                if(numbers[i]<min){
+                    min = numbers[i];
+                }
+            }
+            show(min,"min : ");
+
+            document.getElementById('res').insertAdjacentHTML('beforeend', "<br>");
         }
+
     </script>
 
 </head>
