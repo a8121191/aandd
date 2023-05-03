@@ -23,7 +23,7 @@
             searchNumber = Number(searchNumber);
 
             var searchTimes = 1;//調べるのは何回目か
-            var searchIndex = (numbers.length-1)/2;//調べるindex番号
+            var searchIndex = (numbers.length-1)/(searchTimes*2);//調べるindex番号
             var searchIndexLeft = Math.floor(searchIndex);//小数だった場合の、数直線における左側の整数
             var searchIndexRight = Math.ceil(searchIndex);//小数だった場合の、数直線における右側の整数
 
@@ -43,7 +43,7 @@
                 }else if(searchNumber < numbers[searchIndexLeft]){
                     //↑配列における調べたindex番号に該当する値<見つけたい値
                     searchTimes += 1;
-                    var moveLen = numbers.length/(searchTimes*2);//調べるindexへ動く距離
+                    var moveLen = (numbers.length-1)/(searchTimes*2);//調べるindexへ動く距離
                     var nextSearchIndex = searchIndex - moveLen;
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
@@ -58,7 +58,7 @@
                 }else if(searchNumber > numbers[searchIndexRight]){
                     //↑配列における調べたindex番号に該当する値>見つけたい値
                     searchTimes += 1;
-                    var moveLen = numbers.length/(searchTimes*2);//調べるindexへ動く距離
+                    var moveLen = (numbers.length-1)/(searchTimes*2);//調べるindexへ動く距離
                     var nextSearchIndex = searchIndex + moveLen;
                     var nextSearchIndexLeft = Math.floor(nextSearchIndex);
                     var nextSearchIndexRight = Math.ceil(nextSearchIndex);
