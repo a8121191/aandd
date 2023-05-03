@@ -13,38 +13,66 @@
         var numbers = []
 
         function runButtonPressed() {
-            numbers = [];
+            numbers = []
             createOrderedRandomNumbers(numbers, 20);
             show(numbers,"numbers : ");
         }
 
         function searchButtonPressed(){
             var searchNumber = document.getElementById("searchNum").value;
-            var searchPoint = Math.floor(numbers.length/2);//調べるindex番号
-            var moveLen = numbers.length;
+            searchNumber = Number(searchNumber);
+
+            var searchTimes = 1;//調べるのは何回目か
+            var searchIndex = (numbers.length-1)/2;//調べるindex番号
+            var searchIndexLeft = Math.floor(searchIndex);//小数だった場合の、数直線における左側の整数
+            var searchIndexRight = Math.ceil(searchIndex);//小数だった場合の、数直線における右側の整数
+
             var result = 'unfinished'
 
             while(result == "unfinished"){
-                //値がリストの最大値最小値より大きい小さい（つまりリストのレンジからはみ出ている状態）のifを入れる？
+                
+                if(searchNumber < numbers[0] || searchNumber > numbers[numbers.length-1]){
+                    result = searchNumber +" is not exist."
 
-                if(searchNumber == numbers[searchPoint]){
-                    result = searchNumber+' is found.  Index number is '+searchPoint
+                }else if(searchNumber == numbers[searchIndexLeft]){
+                    result = searchNumber+' is found.  Index number is '+searchIndexLeft;
 
-                }else if(searchNumber < numbers[searchPoint]){
+                }else if(searchNumber == numbers[searchIndexRight]){
+                    result = searchNumber+' is found.  Index number is '+searchIndexRight;
+
+                }else if(searchNumber < numbers[searchIndexLeft]){
                     //↑配列における調べたindex番号に該当する値<見つけたい値
-                    searchPoint = Math.floor(searchPoint / 2);
-                    //↑調べるindex番号を小さくした
+                    searchTimes += 1;
+                    var moveLen = numbers.length/(searchTimes*2);//調べるindexへ動く距離
+                    var nextSearchIndex = searchIndex - moveLen;
+                    var nextSearchIndexLeft = Math.floor(nextSearchIndex);
+                    var nextSearchIndexRight = Math.ceil(nextSearchIndex);
+                    if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
+                        result = searchNumber +" is not exist."
+                    }else{
+                        searchIndex = nextSearchIndex;
+                        searchIndexLeft = nextSearchIndexLeft;
+                        searchIndexRight = nextSearchIndexRight;
+                    }
 
-                }else if(searchNumber > numbers[searchPoint]){
-
+                }else if(searchNumber > numbers[searchIndexRight]){
                     //↑配列における調べたindex番号に該当する値>見つけたい値
-                    searchPoint = Math.floor(searchPoint * 3 / 2);
-                    //↑調べるindex番号を大きくした
-
+                    searchTimes += 1;
+                    var moveLen = numbers.length/(searchTimes*2);//調べるindexへ動く距離
+                    var nextSearchIndex = searchIndex + moveLen;
+                    var nextSearchIndexLeft = Math.floor(nextSearchIndex);
+                    var nextSearchIndexRight = Math.ceil(nextSearchIndex);
+                    if(searchIndexLeft == nextSearchIndexLeft && searchIndexRight == nextSearchIndexRight){
+                        result = searchNumber +" is not exist."
+                    }else{
+                        searchIndex = nextSearchIndex;
+                        searchIndexLeft = nextSearchIndexLeft;
+                        searchIndexRight = nextSearchIndexRight;
+                    }
                 }
             }
 
-            show(result,"");
+            show(result,"result : ");
         }
     </script>
 
