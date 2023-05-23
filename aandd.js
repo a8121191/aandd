@@ -1,5 +1,5 @@
 //tamplate4-3からコピー
-/*function show(obj) {
+function show(obj) {
     if (Array.isArray(obj)) {
         var html = '';
         html = html + '<table border="1">';
@@ -14,31 +14,31 @@
     } else {
         var string = JSON.stringify(obj);
         string = string + '<br>';
-        document.getElementById('res').insertAdjacentHTML('beforeend', string);
-    }
-}*/
-
-//template4-3からコピーしたものを書き換え
-function show(obj,name) {
-    if (Array.isArray(obj)) {
-        var html = '';
-        html = html + '<table border="1">';
-        html = html + '<tr>';
-        for (var i = 0; i < obj.length; i++) {
-            html = html + '<td>' + obj[i] + '</td>';
-        }
-        html = html + '</tr>';
-        html = html + '</table>';
-        //html = html + '<br>';
-        document.getElementById('res').insertAdjacentHTML('beforeend', name);
-        document.getElementById('res').insertAdjacentHTML('beforeend', html);
-    } else {
-        var string = JSON.stringify(obj);
-        string = string + '<br>';
-        document.getElementById('res').insertAdjacentHTML('beforeend', name);
         document.getElementById('res').insertAdjacentHTML('beforeend', string);
     }
 }
+
+//template4-3からコピーしたものを書き換え
+/*function show(obj,name) {
+    if (Array.isArray(obj)) {
+        var html = '';
+        html = html + '<table border="1">';
+        html = html + '<tr>';
+        for (var i = 0; i < obj.length; i++) {
+            html = html + '<td>' + obj[i] + '</td>';
+        }
+        html = html + '</tr>';
+        html = html + '</table>';
+        //html = html + '<br>';
+        document.getElementById('res').insertAdjacentHTML('beforeend', name);
+        document.getElementById('res').insertAdjacentHTML('beforeend', html);
+    } else {
+        var string = JSON.stringify(obj);
+        string = string + '<br>';
+        document.getElementById('res').insertAdjacentHTML('beforeend', name);
+        document.getElementById('res').insertAdjacentHTML('beforeend', string);
+    }
+}*/
 
 function createSequentialNumbers(array, n){
     for(var j=0; j<n; j++){
