@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script type="text/javascript" src="nouns.js"></script>
+    <script type="text/javascript" src="verbs.js"></script>
+
+    <script>
+
+        var nouns;
+
+        $(document).ready(function () {
+            nouns = nounstext.split('\n');
+        });
+
+
+        var verbs;
+
+        $(document).ready(function () {
+            verbs = verbstext.split('\n');
+        });
+
+
+        function runButtonPressed() {
+
+            var state = false;
+            while (state == false) {
+                var noun = selectone(nouns);
+                var verb = selectone(verbs);
+
+                var text = makeSentence2(noun, verb);
+                var ans = reversedText(text);
+                state = checkPaidorome(text, ans);
+            }
+            show(text);
+        }
+
+        function selectone(array) {
+            var size = array.length;
+            var index = Math.floor(Math.random() * size);
+            return array[index];
+        }
+
+        function makeSentence(noun, verb) {
+            var sentence = noun + 'は' + verb + 'です';
+            show(sentence);
+        }
+
+        function makeSentence2(noun, verb) {
+            var sentence = noun + verb;
+
+            return sentence
+        }
+
+        function reversedText(text) {
+
+            var chars = text.split('');
+
+            var reversed = [];
+            for (var i = 0; i < text.length; i++) {
+                var y = chars.pop();
+                reversed.push(y);
+            }
+
+            var ans = reversed.join('');
+
+
+            return ans;
+        }
+
+        function checkPaidorome(text, ans) {
+            var result = true;
+            if (text == ans) {
+                result = true;
+
+            } else {
+                result = false;
+
+            }
+            console.log(result);
+
+
+            return result;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>読み込み，選ぶ</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+
+</body>
+
+</html>
