@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var numbers = [];
+        var lower = 0;
+
+        function createRandomNumbersPlus() {
+            createRandomNumbers(numbers, 10);
+            show(numbers);
+        }
+
+        function runButtonPressed() {
+            var startTime = new Date();
+            //処理            
+            //ここに，並び替えのプログラムを書く
+            for (var k = 0; k < numbers.length; k++) {
+                var shuffleNum = 0
+
+                for (i = 0; i < lower; i++) {
+                    if (numbers[lower - (i + 1)] <= numbers[lower]) {
+                        break;
+                    }
+                    shuffleNum = i + 1;
+                }
+
+                for (j = 0; j < shuffleNum; j++) {
+                    var tmp = numbers[lower - j];
+                    numbers[lower - j] = numbers[lower - (j + 1)];
+                    numbers[lower - (j + 1)] = tmp;
+                }
+
+                lower += 1;
+                show(numbers);
+            }
+            //処理終わり
+            var endTime = new Date();
+            var time = endTime - startTime;
+            show(time + 'ミリ秒');
+            show(numbers);
+        }
+
+        function runOnceButtonPressed() {
+
+            var shuffleNum = 0;
+
+            for (i = 0; i < lower; i++) {
+                if (numbers[lower - (i + 1)] <= numbers[lower]) {
+                    break;
+                }
+                shuffleNum = i + 1;
+            }
+
+            for (j = 0; j < shuffleNum; j++) {
+                var tmp = numbers[lower - j];
+                numbers[lower - j] = numbers[lower - (j + 1)];
+                numbers[lower - (j + 1)] = tmp;
+            }
+
+            lower += 1;
+
+            show(numbers);
+
+        }
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>時間の測定</h1>
+    <button onclick="createRandomNumbersPlus()">createRandomNumbers</button>
+    <button onclick="runOnceButtonPressed()">run once</button>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
