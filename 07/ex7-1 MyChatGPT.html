@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var MyChatGPT = {};
+
+        $().ready(function () {
+            MyChatGPT['おはよう'] = 'おはようございます';
+            MyChatGPT['いってきます'] = 'いってらっしゃい';
+        });
+
+        function registerButtonPressed() {
+            var input = document.getElementById("tf3").value;
+            var ans = document.getElementById("tf4").value;
+            MyChatGPT[input] = ans;
+        }
+
+        function runButtonPressed() {
+            var input = document.getElementById('tf1').value;
+            if (input in MyChatGPT) {
+                var ans = MyChatGPT[input];
+                document.getElementById('tf2').value = ans;
+            } else {
+                document.getElementById('tf2').value = '登録してください';
+                document.getElementById("tf3").value = input;
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>登録</h1>
+    入力文を登録：<input id="tf3" type="text" value="">
+    <br>
+    返答を登録：<input id="tf4" type="text" value="">
+    <button onclick="registerButtonPressed()">登録!</button>
+    <h1>MyChatGPT</h1>
+    入力してしてください：<input id="tf1" type="text" value="">
+    <br>
+    返答：<input id="tf2" type="text" value="">
+    <button onclick="runButtonPressed()">検索!</button>
+    <p id="res"></p>
+</body>
+
+</html>
