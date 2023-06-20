@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+
+    <script type="text/javascript" src="../jquery.min.js"></script>
+    <script type="text/javascript" src="../osql.js"></script>
+
+    <script>
+        osql.requireLogin();//すべてのページに入れる．google認証をして，osql.connect()や，osql.getMe()を使えるようにしてくれる．
+
+        $(document).ready(function () {
+            averageHeight();
+        });
+
+        async function averageHeight() {
+            var sql = `select * from Students`;
+            var objects = await osql.connect(sql);
+
+            var menHeiSum = 0;
+            var menNum = 0;
+            var womenHeiSum = 0;
+            var womenNum = 0;
+
+            var birth = {};
+
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+
+                birth[object.name] = object.birthday;
+
+                if (object.gender == "m") {
+                    menHeiSum += Number(object.height);
+                    menNum += 1;
+                } else if (object.gender == "f") {
+                    womenHeiSum += Number(object.height);
+                    womenNum += 1;
+                }
+            }
+            var menAve = menHeiSum / menNum;
+            var womenAve = womenHeiSum / womenNum;
+            console.log(menAve);
+            console.log(womenAve);
+
+            console.log(birth);
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>登録</h1>
+    英語：<input id="tf3" type="text" value="">
+    <br>
+    日本語：<input id="tf4" type="text" value="">
+    <button onclick="registerButtonPressed()">登録!</button>
+    <h1>検索</h1>
+    英語：<input id="tf1" type="text" value="">
+    <br>
+    日本語：<input id="tf2" type="text" value="">
+    <button onclick="runButtonPressed()">検索!</button>
+    <p id="res"></p>
+
+</body>
+
+</html>
