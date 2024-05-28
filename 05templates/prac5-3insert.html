@@ -70,6 +70,32 @@
 
         }
 
+        function runButtonPressed_twoArray() {
+            var sort_numbers = [];
+            for (var i = 0; i < numbers.length; i++) {
+                var number = numbers[i];
+                for (var j = 0; j < sort_numbers.length; j++) {
+                    if (number < sort_numbers[j]) {
+                        insert(sort_numbers, number, j);
+                        break;
+                    }
+                }
+                sort_numbers[j] = number;
+            }
+            show(sort_numbers);
+        }
+
+        function insert_test() {
+            insert(numbers, 100, 2);
+            show(numbers);
+        }
+
+        function insert(numbers, number, index) {
+            for (var i = numbers.length; i > index; i--) {
+                numbers[i] = numbers[i - 1];
+            }
+            numbers[index] = number;
+        }
 
 
     </script>
@@ -81,6 +107,9 @@
     <button onclick="createRandomNumbersPlus()">createRandomNumbers</button>
     <button onclick="runOnceButtonPressed()">run once</button>
     <button onclick="runButtonPressed()">run!</button>
+    <button onclick="runOnceButtonPressed_twoArray()">run once (two Array)</button>
+    <button onclick="runButtonPressed_twoArray()">run! (two Array)</button>
+    <button onclick="insert_test()">insert_test</button>
     <p id="res"></p>
 </body>
 
